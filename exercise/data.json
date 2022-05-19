@@ -1,0 +1,70 @@
+{
+	"value": [
+		{
+			"date": 1586934000000,
+			"value": "7.5",
+			"quality": "G"
+		}
+	],
+	"updated": 1586934000000,
+	"parameter": {
+		"key": "4",
+		"name": "Vindhastighet",
+		"summary": "medelvärde 10 min, 1 gång/tim",
+		"unit": "metre per second"
+	},
+	"station": {
+		"key": "159880",
+		"name": "Arvidsjaur A",
+		"owner": "SMHI",
+		"height": 10.0
+	},
+	"period": {
+		"key": "latest-hour",
+		"from": 1586930401000,
+		"to": 1586934000000,
+		"summary": "Data från senaste timmen",
+		"sampling": "10 minuter"
+	},
+	"position": [
+		{
+			"from": 823132800000,
+			"to": 1586934000000,
+			"height": 382.45,
+			"latitude": 65.5941,
+			"longitude": 19.2642
+		}
+	],
+	"link": [
+		{
+			"rel": "data",
+			"type": "application/json",
+			"href": "https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/4/station/159880/period/latest-hour/data.json"
+		},
+		{
+			"rel": "data",
+			"type": "application/xml",
+			"href": "https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/4/station/159880/period/latest-hour/data.xml"
+		},
+		{
+			"rel": "data",
+			"type": "text/plain",
+			"href": "https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/4/station/159880/period/latest-hour/data.csv"
+		},
+		{
+			"rel": "period",
+			"type": "application/atom+xml",
+			"href": "https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/4/station/159880/period/latest-hour.atom"
+		},
+		{
+			"rel": "iso19139",
+			"type": "application/vnd.iso.19139+xml",
+			"href": "https://opendata-catalog.smhi.se/catalog/srv/eng/csw?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&outputSchema=csw:IsoRecord&id=25080190-38ba-4279-a65d-d9ef8d0bf949"
+		},
+		{
+			"rel": "iso19139",
+			"type": "application/vnd.iso.19139+xml",
+			"href": "https://opendata-catalog.smhi.se/catalog/srv/eng/csw?request=GetRecordById&service=CSW&version=2.0.2&elementSetName=full&outputSchema=csw:IsoRecord&id=bbcb137b-b8fc-450c-b67d-6c3239dbe0de"
+		}
+	]
+}
