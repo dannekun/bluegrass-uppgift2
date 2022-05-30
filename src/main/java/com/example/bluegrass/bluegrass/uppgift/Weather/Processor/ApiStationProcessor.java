@@ -1,5 +1,7 @@
-package com.example.bluegrass.bluegrass.uppgift;
+package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
+import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
+import com.example.bluegrass.bluegrass.uppgift.classes.WeatherData;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.json.JSONObject;
@@ -30,13 +32,13 @@ public class ApiStationProcessor implements Processor {
         String stationKey = jsonObject1.get("key").toString();
         parameter.setName(nameParameter);
         exchange.getIn().setBody(parameter);
-        weatherService.globalWeather.getReading().get(0).setStationName(nameParameter);
+        weatherService.getGlobalWeather().getReading().get(0).setStationName(nameParameter);
         BigInteger stationKeyInt = new BigInteger(stationKey);
-        weatherService.globalWeather.getReading().get(0).setStationId(stationKeyInt);
+        weatherService.getGlobalWeather().getReading().get(0).setStationId(stationKeyInt);
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
-        weatherService.globalWeather.getReading().get(0).setTimestamp(now);
+        weatherService.getGlobalWeather().getReading().get(0).setTimestamp(now);
 
     }
 }

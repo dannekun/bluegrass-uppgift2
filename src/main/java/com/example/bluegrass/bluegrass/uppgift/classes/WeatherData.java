@@ -6,7 +6,7 @@
 //
 
 
-package com.example.bluegrass.bluegrass.uppgift;
+package com.example.bluegrass.bluegrass.uppgift.classes;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

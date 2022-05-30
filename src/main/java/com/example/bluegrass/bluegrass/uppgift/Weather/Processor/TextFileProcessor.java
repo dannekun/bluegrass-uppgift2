@@ -1,5 +1,6 @@
-package com.example.bluegrass.bluegrass.uppgift;
+package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
+import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,21 +23,19 @@ public class TextFileProcessor implements Processor {
     @Transactional
     @Override
     public void process(Exchange exchange) throws Exception {
-        String filename = "./"+weatherService.globalWeather.getReading().get(0).getStationName()+".txt";
+        String filename = "./"+weatherService.getGlobalWeather().getReading().get(0).getStationName()+".txt";
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(new FileWriter(filename, true));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        String stringToPrint = weatherService.globalWeather.getReading().get(0).getTimestamp()+
-                "," + weatherService.globalWeather.getReading().get(0).getStationName()+
-                ","+ weatherService.globalWeather.getReading().get(0).getParameter().get(0).getValue()+
-                "," + weatherService.globalWeather.getReading().get(0).getParameter().get(1).getValue() +
-                ","+ weatherService.globalWeather.getReading().get(0).getParameter().get(2).getValue();
+        String stringToPrint = weatherService.getGlobalWeather().getReading().get(0).getTimestamp()+
+                "," + weatherService.getGlobalWeather().getReading().get(0).getStationName()+
+                ","+ weatherService.getGlobalWeather().getReading().get(0).getParameter().get(0).getValue()+
+                "," + weatherService.getGlobalWeather().getReading().get(0).getParameter().get(1).getValue() +
+                ","+ weatherService.getGlobalWeather().getReading().get(0).getParameter().get(2).getValue();
 
         writer.println(stringToPrint);
         writer.close();

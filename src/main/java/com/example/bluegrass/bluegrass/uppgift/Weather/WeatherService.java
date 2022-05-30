@@ -1,6 +1,6 @@
-package com.example.bluegrass.bluegrass.uppgift;
+package com.example.bluegrass.bluegrass.uppgift.Weather;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.bluegrass.bluegrass.uppgift.classes.WeatherData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -39,6 +39,14 @@ public class WeatherService {
         globalWeather.setReading(readings);
     }
 
+
+    public WeatherData getGlobalWeather() {
+        return globalWeather;
+    }
+
+    public void setGlobalWeather(WeatherData globalWeather) {
+        this.globalWeather = globalWeather;
+    }
 
     public String stringWeather(WeatherData weatherData){
         return "StationId: "+ weatherData.getReading().get(0).getStationId() + ", StationName: "+ weatherData.getReading().get(0).getStationName() +
