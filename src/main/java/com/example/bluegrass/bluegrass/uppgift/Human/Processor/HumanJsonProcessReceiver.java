@@ -1,8 +1,8 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Processor;
 
 import com.example.bluegrass.bluegrass.uppgift.Human.HumanGlobal;
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.beans.factory.annotation.Autowired;

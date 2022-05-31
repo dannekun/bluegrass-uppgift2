@@ -1,6 +1,6 @@
 package com.example.bluegrass.bluegrass.uppgift.Human;
 
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
+import generated.Human;
 import org.springframework.stereotype.Component;
 
 @Component

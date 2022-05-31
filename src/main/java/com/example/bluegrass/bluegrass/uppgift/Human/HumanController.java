@@ -2,7 +2,8 @@ package com.example.bluegrass.bluegrass.uppgift.Human;
 
 
 import com.example.bluegrass.bluegrass.uppgift.Human.Processor.HumanJsonProcessReceiver;
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
+import com.example.bluegrass.bluegrass.uppgift.repositories.HumanRepository;
+import generated.Human;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

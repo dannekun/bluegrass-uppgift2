@@ -1,28 +1,33 @@
 package com.example.bluegrass.bluegrass.uppgift;
 
+import com.cmeza.sdgenerator.annotation.SDGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 import javax.servlet.Servlet;
 
+
+@SDGenerator(
+		entityPackage = "generated",
+		repositoryPackage = "com.example.bluegrass.bluegrass.uppgift.repositories",
+		managerPackage = "com.example.bluegrass.bluegrass.uppgift.managers",
+		repositoryPostfix = "Repository",
+		managerPostfix = "Manager",
+		onlyAnnotations = false,
+		debug = false,
+		overwrite = false,
+		additionalExtends = {
+				QuerydslPredicateExecutor.class
+		},
+		lombokAnnotations = false,
+		withComments = true
+)
 @SpringBootApplication
 public class BluegrassUppgiftApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(BluegrassUppgiftApplication.class, args);
 	}
-
-	/*
-	@Bean
-	public ServletRegistrationBean servletRegistrationBean() {
-		ServletRegistrationBean registration =
-				new ServletRegistrationBean((Servlet) new CamelHttpTransportServlet(), "/api/*");
-		registration.setName("CamelServlet");
-		return registration;
-	}
-
-	 */
-
 }

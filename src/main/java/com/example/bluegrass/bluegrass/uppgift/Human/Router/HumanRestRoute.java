@@ -1,10 +1,10 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Router;
 
 import com.example.bluegrass.bluegrass.uppgift.Human.HumanBean;
-import com.example.bluegrass.bluegrass.uppgift.Human.HumanRepository;
 import com.example.bluegrass.bluegrass.uppgift.Human.Processor.HumanJsonProcessReceiver;
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
+import com.example.bluegrass.bluegrass.uppgift.repositories.HumanRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.camel.builder.RouteBuilder;

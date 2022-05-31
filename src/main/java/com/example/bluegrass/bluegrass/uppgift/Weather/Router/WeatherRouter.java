@@ -1,7 +1,8 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Router;
 
 import com.example.bluegrass.bluegrass.uppgift.Weather.Processor.*;
-import com.example.bluegrass.bluegrass.uppgift.classes.WeatherData;
+import generated.WeatherData;
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class WeatherRouter extends RouteBuilder {
     int x = 0;
     @Override
     public void configure() throws Exception {
-        /*
+
         from("timer:{{log-inpoint}}?period={{call-timer}}").setHeader(Exchange.HTTP_METHOD, simple("GET"))
                 .to("https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/3/station/{{station-api}}/period/latest-hour/data.json")
                 .process(apiNameValueProcessor).marshal(jsonDataFormat)
@@ -44,7 +45,7 @@ public class WeatherRouter extends RouteBuilder {
                 .process(databaseProcessor)
                 .to("log:{{log-endpoint}}");
 
-         */
+
 
 
     }

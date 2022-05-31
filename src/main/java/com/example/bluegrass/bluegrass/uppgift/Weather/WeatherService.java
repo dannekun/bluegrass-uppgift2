@@ -1,6 +1,6 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather;
 
-import com.example.bluegrass.bluegrass.uppgift.classes.WeatherData;
+import generated.WeatherData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

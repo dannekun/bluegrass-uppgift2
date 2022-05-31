@@ -5,7 +5,7 @@ import com.example.bluegrass.bluegrass.uppgift.Human.Processor.GlobalXMLFileProc
 import com.example.bluegrass.bluegrass.uppgift.Human.Processor.HumanCSVProcessor;
 import com.example.bluegrass.bluegrass.uppgift.Human.Processor.HumanJsonProcessReceiver;
 import com.example.bluegrass.bluegrass.uppgift.Human.Processor.HumanTxtProcessor;
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
+import generated.Human;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
 import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
-import com.example.bluegrass.bluegrass.uppgift.classes.WeatherData;
+import generated.WeatherData;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.json.JSONObject;

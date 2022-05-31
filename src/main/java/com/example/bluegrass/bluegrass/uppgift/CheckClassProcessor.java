@@ -1,6 +1,5 @@
 package com.example.bluegrass.bluegrass.uppgift;
 
-import com.example.bluegrass.bluegrass.uppgift.classes.Human;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import org.apache.camel.Exchange;

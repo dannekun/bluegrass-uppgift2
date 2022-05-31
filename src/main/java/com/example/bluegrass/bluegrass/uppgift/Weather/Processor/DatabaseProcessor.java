@@ -1,7 +1,7 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherDataRepository;
 import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
+import com.example.bluegrass.bluegrass.uppgift.repositories.WeatherDataRepository;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.beans.factory.annotation.Autowired;
