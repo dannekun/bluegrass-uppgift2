@@ -1,32 +1,31 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Human.HumanGlobal;
 import com.github.opendevl.JFlat;
+import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @Component
 public class HumanCSVProcessor implements Processor {
 
-
-    @Autowired
-    HumanGlobal humanGlobal;
-
-
-
     @Override
     public void process(Exchange exchange) throws Exception {
 
-        String str = new String(Files.readAllBytes(Paths.get("files/Human/json/"+humanGlobal.getHuman().getFirstName()+".json")));
+        Human human = exchange.getIn().getBody(Human.class);
 
-        JFlat jFlat = new JFlat(str);
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("ID", human.getHjid().toString());
+        map.put("FirstName",human.getFirstName());
+        map.put("LastName",human.getLastName());
+        map.put("HairColor",human.getHairColor());
+        map.put("Birthday", human.getBirth().toString());
 
-        jFlat.json2Sheet().write2csv("files/Human/csv/"+humanGlobal.getHuman().getFirstName()+".csv");
-        System.out.println("CSV created");
+        exchange.getIn().setBody(map);
     }
 }

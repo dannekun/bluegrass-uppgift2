@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.Servlet;
 

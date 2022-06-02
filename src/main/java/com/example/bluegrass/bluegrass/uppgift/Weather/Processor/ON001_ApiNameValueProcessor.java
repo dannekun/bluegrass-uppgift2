@@ -19,7 +19,6 @@ import java.util.GregorianCalendar;
 @Component
 public class ON001_ApiNameValueProcessor implements Processor {
 
-    int positionInArray = 0;
     @Transactional
     @Override
     public void process(Exchange exchange) {

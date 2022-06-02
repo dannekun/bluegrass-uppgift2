@@ -1,9 +1,8 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Human.HumanGlobal;
+import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
@@ -13,13 +12,12 @@ import java.io.UnsupportedEncodingException;
 
 @Component
 public class HumanTxtProcessor implements Processor {
-
-    @Autowired
-    HumanGlobal humanGlobal;
-
     @Override
     public void process(Exchange exchange) throws Exception {
-        String filename = "files/Human/txt/"+humanGlobal.getHuman().getFirstName()+".txt";
+
+        Human human = exchange.getIn().getBody(Human.class);
+
+        String filename = "files/Human/txt/"+ human.getFirstName()+".txt";
         PrintWriter writer = null;
         try {
             writer = new PrintWriter(new FileWriter(filename, true));
@@ -27,7 +25,7 @@ public class HumanTxtProcessor implements Processor {
             e.printStackTrace();
         }
 
-        String print = humanGlobal.getHuman().getFirstName() + " "+ humanGlobal.getHuman().getLastName()+ ", "+ humanGlobal.getHuman().getHairColor()+ ", "+ humanGlobal.getHuman().getBirth();
+        String print = human.getFirstName() + " "+ human.getLastName()+ ", "+ human.getHairColor()+ ", "+ human.getBirth();
 
         writer.println(print);
         writer.close();
