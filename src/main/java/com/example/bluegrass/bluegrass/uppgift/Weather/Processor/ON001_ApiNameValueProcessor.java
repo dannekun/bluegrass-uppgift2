@@ -1,12 +1,10 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
 import generated.WeatherData;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -19,7 +17,6 @@ import java.util.GregorianCalendar;
 @Component
 public class ON001_ApiNameValueProcessor implements Processor {
 
-    @Transactional
     @Override
     public void process(Exchange exchange) {
 

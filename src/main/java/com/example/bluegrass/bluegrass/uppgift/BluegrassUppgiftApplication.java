@@ -3,12 +3,8 @@ package com.example.bluegrass.bluegrass.uppgift;
 import com.cmeza.sdgenerator.annotation.SDGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import javax.servlet.Servlet;
 
 
 @SDGenerator(

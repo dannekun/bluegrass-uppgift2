@@ -21,7 +21,6 @@ public class WeatherRouter extends RouteBuilder {
     @Autowired
     OFF001_DatabaseProcessor OF001DatabaseProcessor;
 
-    int x = 0;
     @Override
     public void configure() throws Exception {
 /*

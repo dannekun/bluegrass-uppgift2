@@ -17,7 +17,6 @@ import java.util.Map;
 
 @Component
 public class OFF001_CSVProcessor implements Processor {
-    @Transactional
     @Override
     public void process(Exchange exchange) throws Exception {
         WeatherData weatherData = exchange.getIn().getBody(WeatherData.class);

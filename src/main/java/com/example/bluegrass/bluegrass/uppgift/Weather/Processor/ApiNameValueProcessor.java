@@ -1,11 +1,7 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -13,12 +9,9 @@ import javax.transaction.Transactional;
 @Component
 public class ApiNameValueProcessor implements Processor {
 
-    @Autowired
-    WeatherService weatherService;
-    int positionInArray = 0;
-    @Transactional
     @Override
     public void process(Exchange exchange) {
+        /*
         String apiJsonString= exchange.getIn().getBody(String.class);
         JSONObject apiJson = new JSONObject(apiJsonString);
         JSONArray apiValueJsonArray = (JSONArray) apiJson.get("value");
@@ -40,5 +33,8 @@ public class ApiNameValueProcessor implements Processor {
             positionInArray = 2;
         }
         exchange.getIn().setBody(weatherService.getGlobalWeather().getReading().get(0).getParameter().get(positionInArray));
+        */
     }
+
+
 }

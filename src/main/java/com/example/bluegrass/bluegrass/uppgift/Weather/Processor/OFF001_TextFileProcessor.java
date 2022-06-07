@@ -13,7 +13,6 @@ import java.io.UnsupportedEncodingException;
 
 @Component
 public class OFF001_TextFileProcessor implements Processor {
-    @Transactional
     @Override
     public void process(Exchange exchange) throws Exception {
         WeatherData weatherData = exchange.getIn().getBody(WeatherData.class);

@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  mysql:
+    platform: linux/x86_64
+    image: mysql:latest
+    ports:
+      - 3307:3306
+    volumes:
+      - /data/db
+    environment:
+      MYSQL_HOST: mysqldb
+      MYSQL_DATABASE: dannedb
+      MYSQL_USER: sa
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: 1234
+
+  activemq:
+    image: rmohr/activemq:latest
+    ports:
+      - 61616
+
+  springboot:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/dannedb?allowPublicKeyRetrieval=true&useSSL=false
+    depends_on:
+      - mysql
+      - activemq

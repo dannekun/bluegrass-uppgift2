@@ -1,30 +1,20 @@
 package com.example.bluegrass.bluegrass.uppgift.Weather.Processor;
 
-import com.example.bluegrass.bluegrass.uppgift.Weather.WeatherService;
 import generated.WeatherData;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigInteger;
-import java.util.GregorianCalendar;
+
 
 @Component
 public class ApiStationProcessor implements Processor {
-
-    @Autowired
-    WeatherService weatherService;
-
     WeatherData.Reading.Parameter parameter = new WeatherData.Reading.Parameter();
 
-    @Transactional
     @Override
     public void process(Exchange exchange) throws Exception {
+        /*
         String jsonTest= exchange.getIn().getBody(String.class);
         JSONObject rootObj = new JSONObject(jsonTest);
         JSONObject jsonObject1 = (JSONObject) rootObj.get("station");
@@ -39,6 +29,8 @@ public class ApiStationProcessor implements Processor {
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
         weatherService.getGlobalWeather().getReading().get(0).setTimestamp(now);
+
+         */
 
     }
 }
