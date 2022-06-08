@@ -1,5 +1,6 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Router;
 
+import com.example.bluegrass.bluegrass.uppgift.Human.Bean.OFF001_DatabaseBeanV1;
 import com.example.bluegrass.bluegrass.uppgift.repositories.HumanRepository;
 import generated.Human;
 import org.apache.camel.Exchange;
@@ -8,12 +9,16 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.support.DefaultMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.example.bluegrass.bluegrass.uppgift.Human.Human_Endpoints_V1.*;
 
 @Component
 public class ON001_HumanRestV1 extends RouteBuilder {
@@ -22,6 +27,10 @@ public class ON001_HumanRestV1 extends RouteBuilder {
     HumanRepository humanRepository;
 
     JaxbDataFormat jaxbDataFormat = new JaxbDataFormat(Human.class.getPackage().getName());
+
+    @Autowired
+    private OFF001_DatabaseBeanV1 OFF001DatabaseBeanV1;
+
 
     @Override
     public void configure() throws Exception {
@@ -38,31 +47,45 @@ public class ON001_HumanRestV1 extends RouteBuilder {
 
         rest().consumes(MediaType.APPLICATION_JSON_VALUE).produces(MediaType.APPLICATION_JSON_VALUE)
 
-                .get("/human").outType(Human.class).to("direct:getHuman")
+                .get("/human").outType(Human.class).to(REST_DIRECT_GET_HUMAN_V1_ENDPOINT)
                 .description("Get data for all Humans")
                 .responseMessage("200", "On good request")
                 .responseMessage("404", "For invalid requests")
 
-                .post("/human").type(Human.class).to("direct:saveHuman")
+                .post("/human").type(Human.class).to(REST_DIRECT_SAVE_HUMAN_V1_ENDPOINT)
                 .description("Save a human")
                 .get("/human/{id}")
                 .outType(Human.class)
-                //.to("bean:testBean?method=findSpecificHuman(${id})");
-                .to("direct:getHumanSpecific");
+                .to(REST_DIRECT_GET_SPECIFIC_HUMAN_V1_ENDPOINT);
+/*
+        from(REST_DIRECT_SAVE_HUMAN_V1_ENDPOINT)
+                .process(this::findHuman)
+                .marshal(jaxbDataFormat)
+                .to(REST_ACTIVEMQ_SEND_V1_ENDPOINT);
 
+ */
 
-        from("direct:saveHuman").process(this::findHuman).marshal(jaxbDataFormat).to("activemq:restRoute");
+        from(REST_DIRECT_SAVE_HUMAN_V1_ENDPOINT)
+                .choice()
+                .when(method(OFF001DatabaseBeanV1)).log("DEN HITTA")
+                .end()
+                .process(this::findHuman)
+                .marshal(jaxbDataFormat)
+                .to(REST_ACTIVEMQ_SEND_V1_ENDPOINT);
 
-        from("direct:getHuman").process(this::getHuman).log("${body}");
-        from("direct:getHumanSpecific").process(this::getHumanSpecific).log("${body}");
+        from(REST_DIRECT_GET_HUMAN_V1_ENDPOINT)
+                .process(this::getHuman)
+                .log(LOG_BODY);
+
+        from(REST_DIRECT_GET_SPECIFIC_HUMAN_V1_ENDPOINT)
+                .process(this::getHumanSpecific)
+                .log(LOG_BODY);
 
     }
 
     private void getHumanSpecific(Exchange exchange) {
         String id = exchange.getIn().getHeader("ID", String.class);
-
         Optional<Human> human = humanRepository.findById(Long.valueOf(id));
-
         exchange.getIn().setBody(human.get());
     }
 
@@ -93,7 +116,6 @@ public class ON001_HumanRestV1 extends RouteBuilder {
                     exchange.getIn().setBody(human);
                 }
             }
-
         }
     }
 
@@ -106,3 +128,6 @@ public class ON001_HumanRestV1 extends RouteBuilder {
         exchange.setMessage(message);
     }
 }
+
+
+

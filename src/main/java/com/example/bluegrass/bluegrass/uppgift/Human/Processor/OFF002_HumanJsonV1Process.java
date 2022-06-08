@@ -1,16 +1,12 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Processor;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-
 @Component
-public class HumanJsonProcessReceiver implements Processor {
+public class OFF002_HumanJsonV1Process implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {

@@ -1,18 +1,15 @@
 package com.example.bluegrass.bluegrass.uppgift.Human.Processor;
 
-import com.github.opendevl.JFlat;
 import generated.Human;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component
-public class HumanCSVProcessor implements Processor {
+public class OFF002_HumanCsvV1Processor implements Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
